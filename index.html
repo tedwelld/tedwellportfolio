@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tedwell Dumezweni Zwane — Portfolio</title>
+  <style>
+    :root {
+      --bg: #f4f4f4;
+      --text: #222;
+      --card-bg: #fff;
+      --shadow: rgba(0,0,0,0.1);
+      --header-bg: #111;
+      --header-text: #fff;
+    }
+    .dark {
+      --bg: #111;
+      --text: #eee;
+      --card-bg: #1e1e1e;
+      --shadow: rgba(255,255,255,0.1);
+      --header-bg: #000;
+      --header-text: #fff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.3s, color 0.3s; }
+    header { background: var(--header-bg); color: var(--header-text); padding: 40px 20px; text-align: center; position: relative; }
+    #themeToggle { position: absolute; top: 20px; right: 20px; background: #444; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
+    section { max-width: 900px; margin: 40px auto; background: var(--card-bg); padding: 25px; border-radius: 10px; box-shadow: 0 0 10px var(--shadow); transition: background 0.3s; }
+    h2 { margin-bottom: 10px; }
+    ul { margin-left: 20px; margin-top: 10px; }
+    .contact a { color: #3399ff; text-decoration: none; }
+    footer { text-align: center; padding: 20px; margin-top: 40px; color: var(--text); }
+    .fade { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+    .fade.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav style="position:absolute;left:20px;top:20px;">
+    <a href="#projects" style="margin-right:15px;color:var(--header-text);text-decoration:none;font-weight:bold;">Projects</a>
+    <a href="#contact" style="color:var(--header-text);text-decoration:none;font-weight:bold;">Contact</a>
+  </nav>
+  <button id="themeToggle">Toggle Theme</button>
+  <h1>Tedwell Dumezweni Zwane</h1>
+  <p>Junior Software Developer — Portfolio</p>
+</header>
+
+<section class="fade">
+  <h2>Contact Details</h2>
+  <p class="contact">
+    Email: <a href="mailto:zwanetedwell@outlook.com">zwanetedwell@outlook.com</a> / 
+    <a href="mailto:tedwellzwane34@gmail.com">tedwellzwane34@gmail.com</a><br>
+    Phone: +263 789276807<br>
+    Location: Zimbabwe
+  </p>
+</section>
+
+<section class="fade">
+  <h2>Professional Summary</h2>
+  <p>
+    A dedicated Junior Software Developer with strong skills in system integration, API development, troubleshooting, and technical documentation. Experienced with integration platforms, CI/CD pipelines, and Agile methodologies at Shearwater Adventures in Victoria Falls. Passionate about building reliable systems and writing clean, well‑structured code.
+  </p>
+</section>
+
+<section class="fade">
+  <h2>Education</h2>
+  <ul>
+    <li>National Diploma in Information Technology — Gweru Polytechnic College</li>
+    <li>2 A‑Level Passes — Fatima High School</li>
+    <li>7 O‑Level Passes — Marist Brothers High School</li>
+  </ul>
+</section>
+
+<section class="fade">
+  <h2>Technical Skills</h2>
+  <ul>
+    <li>Programming: C#, C++</li>
+    <li>Integrations: APIs, REST, SOAP, SAP Integration Suite</li>
+    <li>Tools: Git, Swagger/OpenAPI</li>
+    <li>Databases: SQL‑based systems</li>
+    <li>Practices: CI/CD, Agile, version control</li>
+    <li>Troubleshooting & problem‑solving</li>
+  </ul>
+</section>
+
+<section class="fade">
+  <h2>Work Experience</h2>
+  <p><strong>Junior Software Developer — Shearwater Adventures (Victoria Falls)</strong></p>
+  <ul>
+    <li>Developed and supported system integrations and internal applications.</li>
+    <li>Participated in API development, testing, and maintenance.</li>
+    <li>Helped resolve system issues and improve platform stability.</li>
+    <li>Documented internal processes and followed best coding standards.</li>
+    <li>Supported CI/CD activities and version control workflows.</li>
+  </ul>
+</section>
+
+<section class="fade">
+  <h2>Key Competencies</h2>
+  <ul>
+    <li>Strong written and verbal communication.</li>
+    <li>Excellent teamwork and collaboration abilities.</li>
+    <li>Effective troubleshooting under pressure.</li>
+    <li>Commitment to clean code and reliable systems.</li>
+  </ul>
+</section>
+
+<section class="fade">
+  <h2>References</h2>
+  <p>
+    Mr Franklin Nldovu<br>
+    Phone: +263 782115130<br>
+    Email: franklinndlovu@shearwatervf.com
+  </p>
+</section>
+
+<section id="projects" class="fade">
+  <h2>Projects</h2>
+  <ul>
+    <li><strong>API Integration Toolkit</strong> — Tool for testing and validating REST/SOAP requests.</li>
+    <li><strong>Internal Ops Dashboard</strong> — Real‑time dashboard for monitoring system health and integration logs.</li>
+    <li><strong>CI/CD Helper Scripts</strong> — Automation scripts for deployment workflows and environment setup.</li>
+    <li><strong>Web Pages Conversion (HTML/CSS/JS + MariaDB)</strong> — Converted multi‑page systems into full frontend + database‑connected web apps using XAMPP.</li>
+    <li><strong>Carmine Visuals Website</strong> — Assisted in debugging, implementing file uploads, admin pages, and solving server issues.</li>
+    <li><strong>Error & Deployment Fixes</strong> — Resolved Node.js, NPM, Multer, Powershell policy, and migration‑related issues across multiple projects.</li>
+  </ul>
+</section>
+
+<section id="contact" class="fade">
+  <h2>Contact Me</h2>
+  <form id="contactForm" style="display:flex;flex-direction:column;gap:10px;">
+    <input type="text" placeholder="Your Name" required style="padding:10px;border-radius:5px;border:1px solid #ccc;">
+    <input type="email" placeholder="Your Email" required style="padding:10px;border-radius:5px;border:1px solid #ccc;">
+    <textarea placeholder="Your Message" required style="padding:10px;border-radius:5px;border:1px solid #ccc;"></textarea>
+    <button type="submit" style="padding:10px 20px;border:none;background:#3399ff;color:#fff;border-radius:5px;cursor:pointer;">Send Message</button>
+  </form>
+  <p id="formMsg" style="margin-top:10px;font-weight:bold;display:none;">Message sent successfully!</p>
+</section>
+
+<section id="services" class="fade">
+  <h2>Services</h2>
+  <ul>
+    <li><strong>Web Development</strong> — Building responsive websites using HTML, CSS, JavaScript, Express, and SQL‑based databases.</li>
+    <li><strong>System Integrations</strong> — REST/SOAP API integrations and SAP Integration Suite support.</li>
+    <li><strong>Software Troubleshooting</strong> — Fixing NPM errors, server issues, migrations, Git problems, and deployment failures.</li>
+    <li><strong>Documentation</strong> — Writing clean, structured technical documentation and API specs.</li>
+    <li><strong>DevOps Assistance</strong> — CI/CD pipelines, version control workflows, and environment setup.</li>
+    <li><strong>Backend Support</strong> — Node.js, Express, authentication, file uploads, and system debugging.</li>
+  </ul>
+</section>
+
+<footer>
+  © 2025 Tedwell Dumezweni Zwane — All Rights Reserved
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('.fade');
+  const reveal = () => {
+    const trigger = window.innerHeight * 0.85;
+    sections.forEach(sec => {
+      const top = sec.getBoundingClientRect().top;
+      if (top < trigger) sec.classList.add('show');
+    });
+  };
+  window.addEventListener('scroll', reveal);
+  window.addEventListener('load', reveal);
+
+  const toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+  });
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+  }
+
+  const form = document.getElementById('contactForm');
+  const msg = document.getElementById('formMsg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    msg.style.display = 'block';
+    setTimeout(() => msg.style.display = 'none', 3000);
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
