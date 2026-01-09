@@ -160,9 +160,11 @@
 
   <h1>Tedwell Dumezweni Zwane</h1>
   <p>Junior Software Developer — Portfolio</p>
+ 
   <button class="download-btn" onclick="downloadPDF()">
   <i class="fas fa-file-pdf"></i> Download PDF
 </button>
+
 
 </header>
 
@@ -318,8 +320,44 @@ function downloadPDF() {
   window.print();
 }
 
+async function downloadPDF() {
+  const { jsPDF } = window.jspdf;
+  const portfolio = document.getElementById('portfolio');
+
+  const canvas = await html2canvas(portfolio, {
+    scale: 2,
+    useCORS: true
+  });
+
+  const imgData = canvas.toDataURL('image/png');
+  const pdf = new jsPDF('p', 'mm', 'a4');
+
+  const pageWidth = pdf.internal.pageSize.getWidth();
+  const pageHeight = pdf.internal.pageSize.getHeight();
+
+  const imgWidth = pageWidth;
+  const imgHeight = canvas.height * imgWidth / canvas.width;
+
+  let heightLeft = imgHeight;
+  let position = 0;
+
+  pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+  heightLeft -= pageHeight;
+
+  while (heightLeft > 0) {
+    position = heightLeft - imgHeight;
+    pdf.addPage();
+    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+    heightLeft -= pageHeight;
+  }
+
+  pdf.save('Tedwell_Zwane_Portfolio.pdf');
+}
+
   
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 </body>
 </html>
