@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tedwell Dumezweni Zwane — Portfolio</title>
 
-  <!-- Font Awesome -->
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -27,61 +27,43 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { background: var(--bg); color: var(--text); line-height: 1.6; transition: 0.3s; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.3s, color 0.3s; }
+    header { background: var(--header-bg); color: var(--header-text); padding: 40px 20px; text-align: center; position: relative; }
 
-    header {
-      background: var(--header-bg);
-      color: var(--header-text);
-      padding: 40px 20px;
-      text-align: center;
-      position: relative;
+    nav a { 
+      margin-right: 15px; 
+      color: var(--header-text); 
+      text-decoration: none; 
+      font-weight: bold; 
     }
 
-    nav a {
-      margin-right: 15px;
-      color: var(--header-text);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
+    /* NEW THEME ICON BUTTON */
     #themeToggle {
       position: absolute;
       top: 20px;
       right: 20px;
-      background: none;
+      background: transparent;
       border: none;
+      cursor: pointer;
       font-size: 26px;
       color: var(--header-text);
-      cursor: pointer;
-    }
-
-    .download-btn {
-      margin-top: 15px;
-      padding: 10px 18px;
-      border-radius: 25px;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      background: #3399ff;
-      color: #fff;
       transition: 0.3s;
     }
-    .download-btn:hover {
-      background: #2277cc;
-      transform: scale(1.05);
+    #themeToggle:hover {
+      transform: scale(1.2);
+      opacity: 0.8;
     }
 
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      background: var(--card-bg);
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px var(--shadow);
+    section { 
+      max-width: 900px; margin: 40px auto; 
+      background: var(--card-bg); padding: 25px; 
+      border-radius: 10px; 
+      box-shadow: 0 0 10px var(--shadow); 
+      transition: background 0.3s; 
     }
 
-    ul { margin-left: 20px; margin-top: 10px; }
     h2 { margin-bottom: 10px; }
+    ul { margin-left: 20px; margin-top: 10px; }
 
     .social-links {
       display: flex;
@@ -91,51 +73,53 @@
     .social-links a {
       font-size: 26px;
       color: #3399ff;
+      text-decoration: none;
       transition: 0.3s;
+    }
+    .social-links a:hover {
+      color: #666;
+      transform: scale(1.1);
     }
 
     footer {
       text-align: center;
       padding: 20px;
       margin-top: 40px;
+      color: var(--text);
     }
 
-    .fade { opacity: 0; transform: translateY(20px); transition: 0.6s; }
+    .fade { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
     .fade.show { opacity: 1; transform: translateY(0); }
   </style>
 </head>
-
 <body>
-
-<div id="portfolio">
 
 <header>
   <nav style="position:absolute;left:20px;top:20px;">
     <a href="#projects">Projects</a>
+   
   </nav>
 
+  <!-- NEW SUN/MOON ICON BUTTON -->
   <button id="themeToggle">
     <i id="themeIcon" class="fas fa-sun"></i>
   </button>
 
   <h1>Tedwell Dumezweni Zwane</h1>
   <p>Junior Software Developer — Portfolio</p>
-
-  <button class="download-btn" onclick="downloadPDF()">
-    <i class="fas fa-file-pdf"></i> Download PDF
-  </button>
 </header>
 
 <section class="fade">
   <h2>Contact Details</h2>
-  <p>
-    Email:
+  <p class="contact">
+    Email: 
     <a href="mailto:zwanetedwell@outlook.com">zwanetedwell@outlook.com</a> /
     <a href="mailto:tedwellzwane34@gmail.com">tedwellzwane34@gmail.com</a><br>
     Phone: +263 789276807<br>
     Location: Zimbabwe
   </p>
 
+  <!-- Social Media Icons -->
   <div class="social-links">
     <a href="https://www.youtube.com/@tedwellzwane" target="_blank"><i class="fab fa-youtube"></i></a>
     <a href="https://www.instagram.com/tedwelld/" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -147,16 +131,14 @@
 <section class="fade">
   <h2>Professional Summary</h2>
   <p>
-    A dedicated Junior Software Developer with strong skills in system integration,
-    API development, troubleshooting, and documentation. Passionate about clean,
-    reliable systems.
+    A dedicated Junior Software Developer with strong skills in system integration, API development, troubleshooting, and technical documentation. Experienced with integration platforms, CI/CD pipelines, and Agile methodologies at Shearwater Adventures in Victoria Falls. Passionate about building reliable systems and writing clean, well-structured code.
   </p>
 </section>
 
 <section class="fade">
   <h2>Education</h2>
   <ul>
-    <li>National Diploma in Information Technology — Gweru Polytechnic</li>
+    <li>National Diploma in Information Technology — Gweru Polytechnic College</li>
     <li>2 A-Level Passes — Fatima High School</li>
     <li>7 O-Level Passes — Marist Brothers High School</li>
   </ul>
@@ -165,105 +147,115 @@
 <section class="fade">
   <h2>Technical Skills</h2>
   <ul>
-    <li>C#, C++</li>
-    <li>REST / SOAP APIs</li>
-    <li>SQL Databases</li>
-    <li>Git & CI/CD</li>
-    <li>Troubleshooting & Debugging</li>
+    <li>Programming: C#, C++</li>
+    <li>Integrations: APIs, REST, SOAP, SAP Integration Suite</li>
+    <li>Tools: Git, Swagger/OpenAPI</li>
+    <li>Databases: SQL-based systems</li>
+    <li>Practices: CI/CD, Agile, version control</li>
+    <li>Troubleshooting & problem-solving</li>
   </ul>
+</section>
+
+<section class="fade">
+  <h2>Work Experience</h2>
+  <p><strong>Junior Software Developer — Shearwater Adventures (Victoria Falls)</strong></p>
+  <ul>
+    <li>Developed and supported system integrations and internal applications.</li>
+    <li>Participated in API development, testing, and maintenance.</li>
+    <li>Helped resolve system issues and improve platform stability.</li>
+    <li>Documented internal processes and followed best coding standards.</li>
+    <li>Supported CI/CD activities and version control workflows.</li>
+  </ul>
+</section>
+
+<section class="fade">
+  <h2>Key Competencies</h2>
+  <ul>
+    <li>Strong written and verbal communication.</li>
+    <li>Excellent teamwork and collaboration abilities.</li>
+    <li>Effective troubleshooting under pressure.</li>
+    <li>Commitment to clean code and reliable systems.</li>
+  </ul>
+</section>
+
+<section class="fade">
+  <h2>References</h2>
+  <p>
+    Mr Franklin Nldovu<br>
+    Phone: +263 782115130<br>
+    Email: franklinndlovu@shearwatervf.com
+  </p>
 </section>
 
 <section id="projects" class="fade">
   <h2>Projects</h2>
   <ul>
-    <li>API Integration Toolkit</li>
-    <li>Internal Ops Dashboard</li>
-    <li>CI/CD Helper Scripts</li>
-    <li>Carmine Visuals Website</li>
+    <li><strong>API Integration Toolkit</strong> — Testing & validating REST/SOAP requests.</li>
+    <li><strong>Internal Ops Dashboard</strong> — Real-time monitoring for logs and system health.</li>
+    <li><strong>CI/CD Helper Scripts</strong> — Automating deployments and workflows.</li>
+    <li><strong>Web Pages Conversion</strong> — HTML/CSS/JS + MariaDB systems using XAMPP.</li>
+    <li><strong>Carmine Visuals Website</strong> — Debugging, file uploads & admin features.</li>
+    <li><strong>Error & Deployment Fixes</strong> — Solving Node.js, NPM, server & migration issues.</li>
   </ul>
 </section>
 
-<section class="fade">
+
+<section id="services" class="fade">
   <h2>Services</h2>
   <ul>
-    <li>Web Application Development</li>
-    <li>System Integrations</li>
-    <li>Database Design</li>
-    <li>Software Troubleshooting</li>
-    <li>Documentation</li>
+    <li><strong>Web Application Development</strong> — Responsive websites (.NET/ASP.NET, HTML, Tailwind CSS, JavaScript, Express, SQL).</li>
+    <li><strong>System Integrations</strong> — REST/SOAP + SAP Integration Suite, backend logic.</li>
+    <li><strong>Database Design and Management</strong> — SQL-based systems, schema design, and query optimization.</li>
+    <li><strong>Software Troubleshooting</strong> — Fixing NPM errors, migrations, server issues.</li>
+    <li><strong>Documentation</strong> — API specs & technical docs.</li>
+    <li><strong>DevOps Assistance</strong> — CI/CD pipelines, version control workflows.</li>
+    <li><strong>Backend Support</strong> — Express.js, authentication, file uploads, debugging.</li>
   </ul>
 </section>
 
 <footer>
+  <p>3281 Hlalanikuhle Extension - Hwange , Dete</p> <br>
   © 2026 Tedwell Dumezweni Zwane — All Rights Reserved
 </footer>
 
-</div>
-
-<!-- LIBRARIES -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 <script>
-  // Fade animation
+  // Fade in sections on scroll
   const sections = document.querySelectorAll('.fade');
   const reveal = () => {
     const trigger = window.innerHeight * 0.85;
     sections.forEach(sec => {
-      if (sec.getBoundingClientRect().top < trigger) sec.classList.add('show');
+      const top = sec.getBoundingClientRect().top;
+      if (top < trigger) sec.classList.add('show');
     });
   };
   window.addEventListener('scroll', reveal);
   window.addEventListener('load', reveal);
 
-  // Theme toggle
+  // Theme Toggle (Sun/Moon)
   const toggle = document.getElementById('themeToggle');
   const icon = document.getElementById('themeIcon');
 
   function updateIcon() {
-    icon.className = document.body.classList.contains('dark')
-      ? 'fas fa-moon'
-      : 'fas fa-sun';
-  }
-
-  toggle.onclick = () => {
-    document.body.classList.toggle('dark');
-    updateIcon();
-  };
-  updateIcon();
-
-  // PDF DOWNLOAD (REAL)
-  async function downloadPDF() {
-    const { jsPDF } = window.jspdf;
-    const portfolio = document.getElementById('portfolio');
-
-    const canvas = await html2canvas(portfolio, {
-      scale: 2,
-      backgroundColor: "#ffffff"
-    });
-
-    const imgData = canvas.toDataURL("image/png");
-    const pdf = new jsPDF("p", "mm", "a4");
-
-    const pageWidth = pdf.internal.pageSize.getWidth();
-    const pageHeight = pdf.internal.pageSize.getHeight();
-    const imgHeight = canvas.height * pageWidth / canvas.width;
-
-    let heightLeft = imgHeight;
-    let position = 0;
-
-    pdf.addImage(imgData, "PNG", 0, position, pageWidth, imgHeight);
-    heightLeft -= pageHeight;
-
-    while (heightLeft > 0) {
-      position -= pageHeight;
-      pdf.addPage();
-      pdf.addImage(imgData, "PNG", 0, position, pageWidth, imgHeight);
-      heightLeft -= pageHeight;
+    if (document.body.classList.contains('dark')) {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+    } else {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
     }
-
-    pdf.save("Tedwell_Zwane_Portfolio.pdf");
   }
+
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    updateIcon();
+  });
+
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+  }
+
+  updateIcon();
 </script>
 
 </body>
