@@ -36,6 +36,22 @@
       text-decoration: none; 
       font-weight: bold; 
     }
+    .download-btn {
+  margin-top: 15px;
+  padding: 10px 18px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #3399ff;
+  color: #fff;
+  transition: 0.3s;
+}
+.download-btn:hover {
+  background: #2277cc;
+  transform: scale(1.05);
+}
+
 
     /* NEW THEME ICON BUTTON */
     #themeToggle {
@@ -90,6 +106,25 @@
 
     .fade { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
     .fade.show { opacity: 1; transform: translateY(0); }
+
+    @media print {
+      #themeToggle,
+      nav,
+      .download-btn {
+        display: none !important;
+      }
+
+      body {
+        background: #fff;
+        color: #000;
+      }
+
+      section {
+        box-shadow: none;
+        margin: 20px auto;
+        page-break-inside: avoid;
+      }
+    }
   </style>
 </head>
 <body>
@@ -104,9 +139,15 @@
   <button id="themeToggle">
     <i id="themeIcon" class="fas fa-sun"></i>
   </button>
+       
+  
 
   <h1>Tedwell Dumezweni Zwane</h1>
   <p>Junior Software Developer — Portfolio</p>
+  <button class="download-btn" onclick="downloadPDF()">
+  <i class="fas fa-file-pdf"></i> Download PDF
+</button>
+
 </header>
 
 <section class="fade">
