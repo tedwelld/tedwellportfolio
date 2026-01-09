@@ -124,6 +124,22 @@
         margin: 20px auto;
         page-break-inside: avoid;
       }
+      .download-btn {
+  margin-top: 15px;
+  padding: 10px 18px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #3399ff;
+  color: #fff;
+  transition: 0.3s;
+}
+.download-btn:hover {
+  background: #2277cc;
+  transform: scale(1.05);
+}
+
     }
   </style>
 </head>
@@ -297,6 +313,12 @@
   }
 
   updateIcon();
+
+function downloadPDF() {
+  window.print();
+}
+
+  
 </script>
 
 </body>
