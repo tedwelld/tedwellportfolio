@@ -16,6 +16,7 @@
       --shadow: rgba(0,0,0,0.1);
       --header-bg: #111;
       --header-text: #fff;
+      --accent: #2f86ff;
     }
     .dark {
       --bg: #111;
@@ -24,11 +25,111 @@
       --shadow: rgba(255,255,255,0.1);
       --header-bg: #000;
       --header-text: #fff;
+      --accent: #73b1ff;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.3s, color 0.3s; }
-    header { background: var(--header-bg); color: var(--header-text); padding: 40px 20px; text-align: center; position: relative; }
+    body {
+      background: radial-gradient(circle at 20% 15%, rgba(47, 134, 255, 0.14), transparent 40%), var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      position: relative;
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(120deg, var(--header-bg), #1f304f);
+      color: var(--header-text);
+      padding: 40px 20px 40px 180px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tech-background {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .tech-pill {
+      position: absolute;
+      border: 1px solid rgba(47, 134, 255, 0.35);
+      color: rgba(47, 134, 255, 0.75);
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      animation: drift 14s linear infinite;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      white-space: nowrap;
+    }
+    .tech-pill:nth-child(2) { top: 28%; left: 8%; animation-duration: 16s; animation-delay: -3s; }
+    .tech-pill:nth-child(3) { top: 55%; left: 78%; animation-duration: 18s; animation-delay: -8s; }
+    .tech-pill:nth-child(4) { top: 72%; left: 36%; animation-duration: 20s; animation-delay: -10s; }
+    .tech-pill:nth-child(5) { top: 15%; left: 68%; animation-duration: 15s; animation-delay: -6s; }
+
+    @keyframes drift {
+      0% { transform: translateY(18px) translateX(0); opacity: 0.2; }
+      20% { opacity: 0.55; }
+      50% { transform: translateY(-24px) translateX(8px); opacity: 0.75; }
+      80% { opacity: 0.55; }
+      100% { transform: translateY(18px) translateX(0); opacity: 0.2; }
+    }
+
+    .profile-photo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 130px;
+      height: 130px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.6);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      background: rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .profile-photo.missing img { display: none; }
+    .profile-photo.missing::after {
+      content: "Click to upload your photo";
+      color: #fff;
+      font-size: 0.68rem;
+      text-align: center;
+      padding: 10px;
+      line-height: 1.3;
+    }
+
+    .welcome-banner {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translate(-50%, -150%);
+      background: rgba(17, 17, 17, 0.92);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-weight: 600;
+      z-index: 9999;
+      transition: transform 0.45s ease;
+      backdrop-filter: blur(6px);
+      text-align: center;
+    }
+    .welcome-banner.show {
+      transform: translate(-50%, 0);
+    }
 
     nav a { 
       margin-right: 15px; 
@@ -60,6 +161,8 @@
       border-radius: 10px; 
       box-shadow: 0 0 10px var(--shadow); 
       transition: background 0.3s; 
+      position: relative;
+      z-index: 1;
     }
 
     h2 { margin-bottom: 10px; }
@@ -86,15 +189,56 @@
       padding: 20px;
       margin-top: 40px;
       color: var(--text);
+      position: relative;
+      z-index: 1;
     }
 
     .fade { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
     .fade.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 165px 18px 28px;
+      }
+      .profile-photo {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .tech-pill {
+        font-size: 0.75rem;
+      }
+      .welcome-banner {
+        width: calc(100% - 24px);
+        border-radius: 12px;
+      }
+    }
   </style>
 </head>
 <body>
+<div class="tech-background" aria-hidden="true">
+  <span class="tech-pill" style="top: 10%; left: 14%;">Software Developer</span>
+  <span class="tech-pill">Software Engineer</span>
+  <span class="tech-pill">DevOps</span>
+  <span class="tech-pill">CI/CD Pipelines</span>
+  <span class="tech-pill">Automation</span>
+</div>
+
+<div id="welcomeBanner" class="welcome-banner" role="status" aria-live="polite">
+  Welcome to Tedwell D Zwane's Portfolio👨‍💻
+</div>
 
 <header>
+  <figure id="profileFrame" class="profile-photo">
+    <img
+      id="profilePhoto"
+      src="assets/tedwell-profile.jpg"
+      alt="Tedwell D Zwane portrait"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </figure>
+  <input id="profileUploader" type="file" accept="image/*" hidden />
+
   <!-- NEW SUN/MOON ICON BUTTON -->
   <button id="themeToggle">
     <i id="themeIcon" class="fas fa-sun"></i>
@@ -261,6 +405,102 @@
   }
 
   updateIcon();
+
+  // Welcome banner on every load/reload
+  const welcomeBanner = document.getElementById('welcomeBanner');
+  window.addEventListener('load', () => {
+    welcomeBanner.classList.add('show');
+    setTimeout(() => welcomeBanner.classList.remove('show'), 3200);
+  });
+
+  const profilePhoto = document.getElementById('profilePhoto');
+  const profileFrame = document.getElementById('profileFrame');
+  const profileUploader = document.getElementById('profileUploader');
+  const profileStorageKey = 'tedwell_profile_photo_data';
+  const candidatePhotoPaths = [
+    'assets/tedwell-profile.jpg',
+    'assets/tedwell-profile.jpeg',
+    'assets/tedwell-profile.png',
+    'assets/profile.jpg',
+    'assets/profile.jpeg',
+    'assets/profile.png'
+  ];
+
+  function setMissingProfileState() {
+    profileFrame.classList.add('missing');
+  }
+
+  function setProfileImage(src) {
+    profilePhoto.src = src;
+    profileFrame.classList.remove('missing');
+  }
+
+  function findFirstAvailablePhoto(paths) {
+    return new Promise((resolve) => {
+      let resolved = false;
+      let pending = paths.length;
+
+      if (!pending) {
+        resolve(null);
+        return;
+      }
+
+      paths.forEach((path) => {
+        const img = new Image();
+        img.onload = () => {
+          if (!resolved) {
+            resolved = true;
+            resolve(path);
+          }
+        };
+        img.onerror = () => {
+          pending -= 1;
+          if (!resolved && pending === 0) {
+            resolve(null);
+          }
+        };
+        img.src = path;
+      });
+    });
+  }
+
+  profilePhoto.addEventListener('error', () => {
+    setMissingProfileState();
+  });
+
+  profileFrame.addEventListener('click', () => {
+    profileUploader.click();
+  });
+
+  profileUploader.addEventListener('change', (event) => {
+    const selectedFile = event.target.files && event.target.files[0];
+    if (!selectedFile) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const photoData = reader.result;
+      setProfileImage(photoData);
+      try {
+        localStorage.setItem(profileStorageKey, photoData);
+      } catch (error) {
+        console.warn('Could not save profile photo in localStorage:', error);
+      }
+    };
+    reader.readAsDataURL(selectedFile);
+  });
+
+  const savedPhoto = localStorage.getItem(profileStorageKey);
+  if (savedPhoto) {
+    setProfileImage(savedPhoto);
+  } else {
+    findFirstAvailablePhoto(candidatePhotoPaths).then((path) => {
+      if (path) {
+        setProfileImage(path);
+      } else {
+        setMissingProfileState();
+      }
+    });
+  }
 </script>
 
 </body>
