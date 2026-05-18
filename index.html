@@ -174,40 +174,13 @@
       gap: 24px;
     }
     .nav-logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      flex-shrink: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: 0.02em;
     }
-    /* Image logo — screen blend makes the black bg transparent on dark surfaces */
-    .nav-logo-img {
-      height: 44px;
-      width: auto;
-      display: block;
-      mix-blend-mode: screen;
-      transition: opacity 0.2s;
-    }
-    .nav-logo:hover .nav-logo-img { opacity: 0.85; }
-    /* In light mode the background is cream so we switch blend off and add a dark pill */
-    [data-theme="light"] .nav-logo-img {
-      mix-blend-mode: normal;
-      background: #111;
-      border-radius: 10px;
-      padding: 2px 6px;
-    }
-    /* Footer logo */
-    .footer-logo-img {
-      height: 52px;
-      width: auto;
-      display: block;
-      mix-blend-mode: screen;
-    }
-    [data-theme="light"] .footer-logo-img {
-      mix-blend-mode: normal;
-      background: #111;
-      border-radius: 10px;
-      padding: 2px 8px;
-    }
+    .nav-logo .accent { color: var(--accent); }
     .nav-links {
       display: flex;
       align-items: center;
@@ -1077,7 +1050,12 @@
       flex-wrap: wrap;
       gap: 24px;
     }
-    .footer-logo { display: block; }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--heading);
+    }
     .footer-brand p { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
     .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
     .footer-links a { font-size: 0.87rem; color: var(--muted); transition: color 0.2s; }
@@ -1223,9 +1201,7 @@
 <!-- ─── Navbar ─── -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
-    <a href="#home" class="nav-logo">
-      <img src="assets/logo-tdz.png" alt="TDZ Logo" class="nav-logo-img" />
-    </a>
+    <a href="#home" class="nav-logo">TDZ<span class="accent">.</span></a>
     <div class="nav-links" id="navLinks">
       <a href="#about"      class="nav-link">About</a>
       <a href="#expertise"  class="nav-link">Expertise</a>
@@ -1945,9 +1921,7 @@
   <div class="container">
     <div class="footer-content">
       <div class="footer-brand">
-        <span class="footer-logo">
-          <img src="assets/logo-tdz.png" alt="TDZ Logo" class="footer-logo-img" />
-        </span>
+        <span class="footer-logo">TDZ<span class="accent">.</span></span>
         <p>IT Specialist &amp; Software Engineer</p>
       </div>
       <div class="footer-links">
