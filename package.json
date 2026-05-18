@@ -1,0 +1,10 @@
+{
+  "name": "tedwellportfolio",
+  "version": "1.0.0",
+  "description": "Tedwell Dumezweni Zwane — IT Specialist & Software Engineer Portfolio",
+  "scripts": {
+    "start": "npx serve . --listen 3000 --no-clipboard",
+    "dev": "npx live-server --port=3000 --open=index.html"
+  },
+  "private": true
+}
