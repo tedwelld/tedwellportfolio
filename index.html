@@ -174,13 +174,40 @@
       gap: 24px;
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--heading);
-      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
     }
-    .nav-logo .accent { color: var(--accent); }
+    /* Image logo — screen blend makes the black bg transparent on dark surfaces */
+    .nav-logo-img {
+      height: 44px;
+      width: auto;
+      display: block;
+      mix-blend-mode: screen;
+      transition: opacity 0.2s;
+    }
+    .nav-logo:hover .nav-logo-img { opacity: 0.85; }
+    /* In light mode the background is cream so we switch blend off and add a dark pill */
+    [data-theme="light"] .nav-logo-img {
+      mix-blend-mode: normal;
+      background: #111;
+      border-radius: 10px;
+      padding: 2px 6px;
+    }
+    /* Footer logo */
+    .footer-logo-img {
+      height: 52px;
+      width: auto;
+      display: block;
+      mix-blend-mode: screen;
+    }
+    [data-theme="light"] .footer-logo-img {
+      mix-blend-mode: normal;
+      background: #111;
+      border-radius: 10px;
+      padding: 2px 8px;
+    }
     .nav-links {
       display: flex;
       align-items: center;
@@ -1050,12 +1077,7 @@
       flex-wrap: wrap;
       gap: 24px;
     }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--heading);
-    }
+    .footer-logo { display: block; }
     .footer-brand p { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
     .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
     .footer-links a { font-size: 0.87rem; color: var(--muted); transition: color 0.2s; }
@@ -1107,7 +1129,7 @@
     }
     @media (max-width: 920px) {
       .nav-links { display: none; }
-      .menu-btn { display: flex; }
+      .menu-btn  { display: none; } /* replaced by bottom nav */
     }
     @media (max-width: 768px) {
       .section { padding: 72px 0; }
@@ -1125,6 +1147,75 @@
       .hero-cta { flex-direction: column; align-items: center; }
       .about-stats { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* ════════════════════════════════
+       MOBILE BOTTOM NAV
+    ════════════════════════════════ */
+    .bottom-nav { display: none; }
+
+    @media (max-width: 920px) {
+      /* push page content above the tab bar */
+      body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+
+      .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1100;
+        height: 64px;
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        background: var(--nav-bg);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-top: 1px solid var(--border);
+        box-shadow: 0 -4px 24px rgba(0,0,0,0.18);
+      }
+
+      .bn-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        color: var(--muted);
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        padding: 8px 4px;
+        transition: color 0.2s;
+        position: relative;
+      }
+
+      .bn-item i { font-size: 1.25rem; line-height: 1; }
+
+      /* active indicator — small accent dot above icon */
+      .bn-item.active::before {
+        content: '';
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 3px;
+        border-radius: 999px;
+        background: var(--accent);
+      }
+
+      .bn-item.active { color: var(--accent); }
+      .bn-item:hover  { color: var(--heading); }
+
+      /* active icon gets a subtle glow */
+      .bn-item.active i {
+        filter: drop-shadow(0 0 6px rgba(200,151,62,0.5));
+      }
+    }
   </style>
 </head>
 <body>
@@ -1132,7 +1223,9 @@
 <!-- ─── Navbar ─── -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
-    <a href="#home" class="nav-logo">TDZ<span class="accent">.</span></a>
+    <a href="#home" class="nav-logo">
+      <img src="assets/logo-tdz.png" alt="TDZ Logo" class="nav-logo-img" />
+    </a>
     <div class="nav-links" id="navLinks">
       <a href="#about"      class="nav-link">About</a>
       <a href="#expertise"  class="nav-link">Expertise</a>
@@ -1852,7 +1945,9 @@
   <div class="container">
     <div class="footer-content">
       <div class="footer-brand">
-        <span class="footer-logo">TDZ<span class="accent">.</span></span>
+        <span class="footer-logo">
+          <img src="assets/logo-tdz.png" alt="TDZ Logo" class="footer-logo-img" />
+        </span>
         <p>IT Specialist &amp; Software Engineer</p>
       </div>
       <div class="footer-links">
@@ -1873,6 +1968,30 @@
     </div>
   </div>
 </footer>
+
+<!-- ─── Mobile Bottom Navigation ─── -->
+<nav class="bottom-nav" id="bottomNav" aria-label="Mobile navigation">
+  <a href="#home" class="bn-item active" data-section="home">
+    <i class="pi pi-home"></i>
+    <span>Home</span>
+  </a>
+  <a href="#about" class="bn-item" data-section="about">
+    <i class="pi pi-user"></i>
+    <span>About</span>
+  </a>
+  <a href="#projects" class="bn-item" data-section="projects">
+    <i class="pi pi-th-large"></i>
+    <span>Projects</span>
+  </a>
+  <a href="#cv" class="bn-item" data-section="cv">
+    <i class="pi pi-download"></i>
+    <span>CV</span>
+  </a>
+  <button class="bn-item" id="bottomMoreBtn" aria-label="More navigation options">
+    <i class="pi pi-bars"></i>
+    <span>More</span>
+  </button>
+</nav>
 
 <!-- ─── Welcome Banner ─── -->
 <div id="welcomeBanner" class="welcome-banner" role="status" aria-live="polite">
@@ -1896,23 +2015,34 @@
 
   applyTheme(localStorage.getItem('theme') || 'dark');
 
-  /* ── Navbar scroll ── */
-  const navbar = document.getElementById('navbar');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('section[id]');
+  /* ── Navbar scroll + bottom nav active state ── */
+  const navbar     = document.getElementById('navbar');
+  const navLinks   = document.querySelectorAll('.nav-link');
+  const bnItems    = document.querySelectorAll('.bn-item[data-section]');
+  const sections   = document.querySelectorAll('section[id]');
 
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
 
-    // Active nav link
     let current = '';
     sections.forEach(sec => {
       if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
     });
+
+    // top nav active
     navLinks.forEach(a => {
       a.classList.toggle('active', a.getAttribute('href') === '#' + current);
     });
+
+    // bottom nav active
+    bnItems.forEach(item => {
+      item.classList.toggle('active', item.dataset.section === current);
+    });
   }, { passive: true });
+
+  /* ── Bottom nav "More" button ── */
+  const bottomMoreBtn = document.getElementById('bottomMoreBtn');
+  if (bottomMoreBtn) bottomMoreBtn.addEventListener('click', openMenu);
 
   /* ── Mobile Menu ── */
   const mobileMenu  = document.getElementById('mobileMenu');
