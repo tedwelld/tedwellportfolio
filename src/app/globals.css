@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ──────────────────────────────────────────────── */
+@theme inline {
+  --color-red:          #CC0000;
+  --color-red-light:    #E50000;
+  --color-red-dark:     #A30000;
+  --color-near-black:   #080808;
+  --color-surface:      #111111;
+  --color-surface-2:    #1A1A1A;
+  --color-ivory:        #F0EDE8;
+  --color-ivory-100:    #FAF8F5;
+
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-body:    var(--font-inter), system-ui, sans-serif;
+}
+
+/* ── CSS Custom Properties ──────────────────────────────────────── */
+:root {
+  --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast:   0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Semantic theme tokens — dark (default) */
+  --bg:        #080808;
+  --bg-alt:    #0C0C0C;
+  --bg-surface:#111111;
+  --bg-card:   #151515;
+  --fg:        #F0EDE8;
+
+  /* Opacity variants */
+  --fg-80: color-mix(in srgb, var(--fg) 80%, transparent);
+  --fg-70: color-mix(in srgb, var(--fg) 70%, transparent);
+  --fg-60: color-mix(in srgb, var(--fg) 60%, transparent);
+  --fg-55: color-mix(in srgb, var(--fg) 55%, transparent);
+  --fg-50: color-mix(in srgb, var(--fg) 50%, transparent);
+  --fg-40: color-mix(in srgb, var(--fg) 40%, transparent);
+  --fg-30: color-mix(in srgb, var(--fg) 30%, transparent);
+  --fg-25: color-mix(in srgb, var(--fg) 25%, transparent);
+  --fg-20: color-mix(in srgb, var(--fg) 20%, transparent);
+  --fg-15: color-mix(in srgb, var(--fg) 15%, transparent);
+  --fg-10: color-mix(in srgb, var(--fg) 10%, transparent);
+  --fg-05: color-mix(in srgb, var(--fg) 5%, transparent);
+
+  /* Accent — TDZ red */
+  --accent:       #CC0000;
+  --accent-hover: #E50000;
+  --accent-dark:  #A30000;
+
+  /* Pill / tag colours */
+  --pill-bg: color-mix(in srgb, var(--accent) 10%, transparent);
+  --pill-bd: color-mix(in srgb, var(--accent) 28%, transparent);
+  --pill-c:  color-mix(in srgb, var(--accent) 85%, var(--fg));
+
+  /* Border */
+  --border: color-mix(in srgb, var(--fg) 8%, transparent);
+
+  /* Shadow */
+  --shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+/* ── Light theme overrides ──────────────────────────────────────── */
+html.theme-light {
+  --bg:        #FFFFFF;
+  --bg-alt:    #F5F2EE;
+  --bg-surface:#EDEBE6;
+  --bg-card:   #FFFFFF;
+  --fg:        #111111;
+}
+
+/* ── Disable native smooth scroll — Lenis handles it ────────────── */
+html {
+  scroll-behavior: auto;
+}
+
+/* ── Base ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+a  { color: inherit; text-decoration: none; }
+ul { list-style: none; margin: 0; padding: 0; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; color: var(--fg); }
+
+/* ── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-surface); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+/* ── Selection ──────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* ── Typography Utilities ───────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+
+/* ── Layout ─────────────────────────────────────────────────────── */
+.container-tdz {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-tdz {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+/* ── Section Alt Background ─────────────────────────────────────── */
+.section-alt {
+  background-color: var(--bg-surface);
+}
+
+/* ── Tags / Pills ───────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-bd);
+  color: var(--pill-c);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+/* ── Card base ──────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(204, 0, 0, 0.08);
+}
+
+/* ── Keyframes ──────────────────────────────────────────────────── */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(8px); opacity: 0.5; }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2.2s ease-in-out infinite;
+}
+
+@keyframes float-orb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(20px, -30px) scale(1.05); }
+  66%       { transform: translate(-15px, 20px) scale(0.97); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── Theme Toggle (uiverse.io — juanpabl0svn / alexruix, MIT) ───── */
+.tdz-theme-switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.tdz-theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.tdz-slider {
+  --background: #20262c;
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--background);
+  transition: 0.5s;
+  border-radius: 30px;
+}
+
+.tdz-slider::before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 50%;
+  left: 10%;
+  bottom: 15%;
+  box-shadow: inset 8px -4px 0px 0px #ececd9, -4px 1px 4px 0px #dadada;
+  background: var(--background);
+  transition: 0.5s;
+}
+
+.tdz-decoration {
+  position: absolute;
+  height: 2px;
+  width: 2px;
+  border-radius: 50%;
+  right: 20%;
+  top: 15%;
+  background: #e5f041e6;
+  backdrop-filter: blur(10px);
+  transition: all 0.5s;
+  box-shadow:
+    -7px 10px 0 #e5f041e6,
+     8px 15px 0 #e5f041e6,
+    -17px 1px 0 #e5f041e6,
+    -20px 10px 0 #e5f041e6,
+    -7px 23px 0 #e5f041e6,
+    -15px 25px 0 #e5f041e6;
+  pointer-events: none;
+}
+
+/* Checked = light mode */
+.tdz-theme-switch input:checked ~ .tdz-decoration {
+  transform: translateX(-20px);
+  width: 10px;
+  height: 10px;
+  background: white;
+  box-shadow:
+    -12px 0 0 white,
+    -6px 0 0 1.6px white,
+    5px 15px 0 1px white,
+    1px 17px 0 white,
+    10px 17px 0 white;
+}
+
+.tdz-theme-switch input:checked + .tdz-slider {
+  background-color: #5494de;
+}
+
+.tdz-theme-switch input:checked + .tdz-slider::before {
+  transform: translateX(100%);
+  box-shadow: inset 15px -4px 0px 15px #efdf2b, 0 0 10px 0px #efdf2b;
+}
