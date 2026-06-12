@@ -63,7 +63,7 @@ export default function Footer() {
           style={{ borderTop: "1px solid var(--border)", color: "var(--fg-30)" }}
         >
           <p>© {new Date().getFullYear()} Tedwell Dumezweni Zwane — All Rights Reserved</p>
-          <p>Powered by Tedwell &amp; Co.</p>
+          <p>Powered by Tedwell</p>
         </div>
       </div>
     </footer>
