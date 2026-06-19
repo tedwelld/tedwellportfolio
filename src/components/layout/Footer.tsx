@@ -8,6 +8,7 @@ const footerLinks = [
   { label: "Projects",   href: "#projects" },
   { label: "CV",         href: "#cv" },
   { label: "Services",   href: "#services" },
+  { label: "Credentials", href: "#certifications" },
   { label: "Education",  href: "#education" },
   { label: "References", href: "#references" },
   { label: "Contact",    href: "#contact" },

@@ -17,7 +17,7 @@ const base =
 
 const variants = {
   primary:
-    "bg-[var(--accent)] text-white hover:bg-[var(--accent-hover)] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(204,0,0,0.35)]",
+    "bg-[var(--accent)] text-[#1a1a1a] hover:bg-[var(--accent-hover)] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(196,180,154,0.35)]",
   outline:
     "bg-transparent border border-[var(--border)] text-[var(--fg)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:-translate-y-0.5",
 };

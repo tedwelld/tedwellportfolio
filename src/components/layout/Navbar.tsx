@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavbarScroll } from "@/hooks/useNavbarScroll";
 import { useActiveSection } from "@/hooks/useActiveSection";
-import { useSiteTheme } from "@/contexts/NavbarThemeContext";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 
 const navLinks = [
@@ -25,7 +24,6 @@ export default function Navbar() {
   const isScrolled = useNavbarScroll();
   const [menuOpen, setMenuOpen] = useState(false);
   const activeSection = useActiveSection(sectionIds);
-  const { theme } = useSiteTheme();
 
   const closeMenu = () => setMenuOpen(false);
 

@@ -7,31 +7,26 @@ const contactItems = [
   {
     icon: "pi-envelope",
     label: "Primary Email",
-    value: "zwanetedwell@outlook.com",
-    href: "mailto:zwanetedwell@outlook.com",
+    value: siteConfig.email.primary,
+    href: `mailto:${siteConfig.email.primary}`,
   },
   {
     icon: "pi-at",
     label: "Gmail",
-    value: "tedwellzwane34@gmail.com",
-    href: "mailto:tedwellzwane34@gmail.com",
+    value: siteConfig.email.gmail,
+    href: `mailto:${siteConfig.email.gmail}`,
   },
   {
     icon: "pi-phone",
     label: "Phone",
-    value: "+263 789 276 807",
-    href: "tel:+263789276807",
+    value: siteConfig.phone,
+    href: `tel:${siteConfig.phone.replace(/\s/g, "")}`,
   },
   {
     icon: "pi-map-marker",
     label: "Location",
-    value: "Zimbabwe",
+    value: siteConfig.location,
   },
-];
-
-const socialLinks = [
-  { icon: "pi-youtube",  label: "YouTube",   href: siteConfig.socials.youtube,   color: "#ff0000" },
-  { icon: "pi-facebook", label: "Facebook",  href: siteConfig.socials.facebook,  color: "#1877f2" },
 ];
 
 export default function ContactSection() {
@@ -39,7 +34,11 @@ export default function ContactSection() {
     <section id="contact" className="section-padding section-alt">
       <div className="container-tdz">
         <ScrollReveal>
-          <SectionLabel tag="Get In Touch" title="Contact" />
+          <SectionLabel
+            tag="Get In Touch"
+            title="Contact"
+            description={siteConfig.availability}
+          />
         </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

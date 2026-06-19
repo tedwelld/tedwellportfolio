@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
-/* ── Design Tokens ──────────────────────────────────────────────── */
+/* ── Design Tokens (TWT black & gold palette) ───────────────────── */
 @theme inline {
-  --color-red:          #CC0000;
-  --color-red-light:    #E50000;
-  --color-red-dark:     #A30000;
-  --color-near-black:   #080808;
-  --color-surface:      #111111;
-  --color-surface-2:    #1A1A1A;
-  --color-ivory:        #F0EDE8;
-  --color-ivory-100:    #FAF8F5;
+  --color-charcoal:       #1a1a1a;
+  --color-charcoal-800:   #2a2a2a;
+  --color-charcoal-600:   #3a3a3a;
+  --color-ivory:          #f5f0e8;
+  --color-ivory-100:      #faf8f4;
+  --color-ivory-200:      #ede6d8;
+  --color-gold:           #c4b49a;
+  --color-gold-light:     #d4c4aa;
+  --color-gold-dark:      #a8987e;
 
   --font-display: var(--font-playfair), Georgia, serif;
   --font-body:    var(--font-inter), system-ui, sans-serif;
@@ -21,11 +22,11 @@
   --transition-fast:   0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Semantic theme tokens — dark (default) */
-  --bg:        #080808;
-  --bg-alt:    #0C0C0C;
-  --bg-surface:#111111;
-  --bg-card:   #151515;
-  --fg:        #F0EDE8;
+  --bg:        #1a1a1a;
+  --bg-alt:    #111111;
+  --bg-surface:#2a2a2a;
+  --bg-card:   #2a2a2a;
+  --fg:        #f5f0e8;
 
   /* Opacity variants */
   --fg-80: color-mix(in srgb, var(--fg) 80%, transparent);
@@ -41,10 +42,10 @@
   --fg-10: color-mix(in srgb, var(--fg) 10%, transparent);
   --fg-05: color-mix(in srgb, var(--fg) 5%, transparent);
 
-  /* Accent — TDZ red */
-  --accent:       #CC0000;
-  --accent-hover: #E50000;
-  --accent-dark:  #A30000;
+  /* Accent — TWT gold */
+  --accent:       #c4b49a;
+  --accent-hover: #d4c4aa;
+  --accent-dark:  #a8987e;
 
   /* Pill / tag colours */
   --pill-bg: color-mix(in srgb, var(--accent) 10%, transparent);
@@ -60,11 +61,11 @@
 
 /* ── Light theme overrides ──────────────────────────────────────── */
 html.theme-light {
-  --bg:        #FFFFFF;
-  --bg-alt:    #F5F2EE;
-  --bg-surface:#EDEBE6;
-  --bg-card:   #FFFFFF;
-  --fg:        #111111;
+  --bg:        #ffffff;
+  --bg-alt:    #f5f0e8;
+  --bg-surface:#ede6d8;
+  --bg-card:   #ffffff;
+  --fg:        #1a1a1a;
 }
 
 /* ── Disable native smooth scroll — Lenis handles it ────────────── */
@@ -98,8 +99,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; color: var(
 
 /* ── Selection ──────────────────────────────────────────────────── */
 ::selection {
-  background-color: var(--accent);
-  color: #fff;
+  background-color: var(--color-gold);
+  color: var(--color-charcoal);
 }
 
 /* ── Typography Utilities ───────────────────────────────────────── */
@@ -163,7 +164,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; color: var(
 .card:hover {
   border-color: var(--accent);
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(204, 0, 0, 0.08);
+  box-shadow: 0 12px 32px rgba(196, 180, 154, 0.12);
 }
 
 /* ── Keyframes ──────────────────────────────────────────────────── */

@@ -10,7 +10,7 @@ export default function CompetenciesSection() {
           <SectionLabel tag="Core Strengths" title="Key Competencies" />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {competencies.map((item, i) => (
             <ScrollReveal key={item.title} delay={i * 0.08}>
               <div className="card p-7 text-center h-full">

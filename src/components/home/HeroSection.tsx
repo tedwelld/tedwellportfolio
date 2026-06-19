@@ -6,23 +6,7 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import Button from "@/components/ui/Button";
 import { siteConfig } from "@/data/siteConfig";
-
-const roles = [
-  "IT Specialist",
-  "Software Engineer",
-  "Full-Stack Developer",
-  "Network Engineer",
-  "Azure Cloud Developer",
-  "DevOps Engineer",
-];
-
-const floatingPills = [
-  "ASP.NET & C#",
-  "Angular",
-  "Microsoft Azure",
-  "CI/CD Pipelines",
-  "Network Engineering",
-];
+import { heroContent } from "@/data/about";
 
 export default function HeroSection() {
   const typewriterRef = useRef<HTMLSpanElement>(null);
@@ -36,10 +20,10 @@ export default function HeroSection() {
     function step() {
       const el = typewriterRef.current;
       if (!el) return;
-      const word = roles[ri];
+      const word = heroContent.roles[ri];
       el.textContent = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
       if (!deleting && ci > word.length) { deleting = true; timer = setTimeout(step, 1600); return; }
-      if (deleting && ci < 0) { deleting = false; ri = (ri + 1) % roles.length; ci = 0; }
+      if (deleting && ci < 0) { deleting = false; ri = (ri + 1) % heroContent.roles.length; ci = 0; }
       timer = setTimeout(step, deleting ? 55 : 90);
     }
     step();
@@ -79,7 +63,7 @@ export default function HeroSection() {
             height: "440px",
             top: "-80px",
             left: "-100px",
-            background: "radial-gradient(circle, rgba(204,0,0,0.14), transparent 70%)",
+            background: "radial-gradient(circle, rgba(196,180,154,0.18), transparent 70%)",
             filter: "blur(80px)",
             animation: "float-orb 22s linear infinite",
           }}
@@ -91,7 +75,7 @@ export default function HeroSection() {
             height: "320px",
             bottom: "10%",
             right: "-60px",
-            background: "radial-gradient(circle, rgba(204,0,0,0.09), transparent 70%)",
+            background: "radial-gradient(circle, rgba(196,180,154,0.12), transparent 70%)",
             filter: "blur(80px)",
             animation: "float-orb 28s linear infinite",
             animationDelay: "-8s",
@@ -104,7 +88,7 @@ export default function HeroSection() {
             height: "200px",
             top: "50%",
             left: "58%",
-            background: "radial-gradient(circle, rgba(204,0,0,0.07), transparent 70%)",
+            background: "radial-gradient(circle, rgba(196,180,154,0.08), transparent 70%)",
             filter: "blur(60px)",
             animation: "float-orb 18s linear infinite",
             animationDelay: "-5s",
@@ -118,7 +102,7 @@ export default function HeroSection() {
         className="absolute inset-0 pointer-events-none z-10"
         aria-hidden="true"
       >
-        {floatingPills.map((pill, i) => (
+        {heroContent.floatingPills.map((pill, i) => (
           <span
             key={pill}
             className="h-pill absolute text-[0.72rem] font-semibold px-3.5 py-1.5 rounded-full"
@@ -126,7 +110,7 @@ export default function HeroSection() {
               background: "var(--pill-bg)",
               border: "1px solid var(--pill-bd)",
               color: "var(--pill-c)",
-              top: `${[18, 32, 68, 78, 12][i]}%`,
+              top: `${[18, 32, 68, 78, 12, 45][i] ?? 50}%`,
               left: i % 2 === 0 ? `${[7, 10][Math.floor(i / 2)]}%` : undefined,
               right: i % 2 === 1 ? `${[8, 12, 22][Math.floor(i / 2)]}%` : undefined,
               opacity: 0.4,
@@ -149,7 +133,7 @@ export default function HeroSection() {
             className="w-48 h-48 rounded-full overflow-hidden flex items-center justify-center"
             style={{
               border: "4px solid var(--accent)",
-              boxShadow: "0 0 0 8px rgba(204,0,0,0.12), var(--shadow)",
+              boxShadow: "0 0 0 8px rgba(196,180,154,0.15), var(--shadow)",
               background: "var(--bg-card)",
             }}
           >
@@ -174,14 +158,14 @@ export default function HeroSection() {
             className="text-xs font-medium tracking-[0.14em] uppercase"
             style={{ color: "var(--accent)" }}
           >
-            Hello, I&apos;m
+            {heroContent.greeting}
           </span>
 
           <h1
             className="font-display font-bold text-[clamp(2.2rem,5.5vw,4rem)] leading-none"
             style={{ color: "var(--fg)" }}
           >
-            Tedwell Dumezweni Zwane
+            {siteConfig.name}
           </h1>
 
           <div
@@ -196,8 +180,7 @@ export default function HeroSection() {
             className="max-w-[560px] text-[0.95rem] leading-[1.75]"
             style={{ color: "var(--fg-50)" }}
           >
-            IT Specialist &amp; Software Engineer from Zimbabwe — building enterprise-grade solutions
-            across full-stack development, Azure cloud technologies, and network infrastructure.
+            {heroContent.bio}
           </p>
         </motion.div>
 

@@ -7,6 +7,7 @@ import ProjectsSection from "@/components/home/ProjectsSection";
 import CVSection from "@/components/home/CVSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import CompetenciesSection from "@/components/home/CompetenciesSection";
+import CertificationsSection from "@/components/home/CertificationsSection";
 import EducationSection from "@/components/home/EducationSection";
 import ContactSection from "@/components/home/ContactSection";
 import ReferencesSection from "@/components/home/ReferencesSection";
@@ -23,6 +24,7 @@ export default function Home() {
       <CVSection />
       <ServicesSection />
       <CompetenciesSection />
+      <CertificationsSection />
       <EducationSection />
       <ContactSection />
       <ReferencesSection />

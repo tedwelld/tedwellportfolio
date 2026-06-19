@@ -2,8 +2,9 @@ export const siteConfig = {
   name: "Tedwell Dumezweni Zwane",
   shortName: "TDZ",
   tagline: "IT Specialist & Software Engineer",
+  headline: "Enterprise Software · Cloud · Integration",
   description:
-    "IT Specialist & Software Engineer from Zimbabwe — building enterprise-grade solutions across full-stack development, Azure cloud technologies, and network infrastructure.",
+    "IT Specialist and Software Engineer from Zimbabwe — delivering enterprise web applications, Azure cloud solutions, system integrations, and production-ready client platforms.",
   url: "https://tedwelld.github.io/tedwellportfolio",
   logo: "/tdz-logo.png",
   email: {
@@ -12,7 +13,8 @@ export const siteConfig = {
   },
   phone: "+263 789 276 807",
   whatsapp: "263789276807",
-  location: "Zimbabwe",
+  location: "Victoria Falls, Zimbabwe",
+  availability: "Open to full-time roles, contract work, and freelance projects",
   github: "https://github.com/tedwelld",
   socials: {
     youtube: "https://www.youtube.com/@tedwellzwane",
@@ -21,9 +23,29 @@ export const siteConfig = {
     whatsapp: "https://wa.me/263789276807",
   },
   stats: [
-    { icon: "pi-code",     value: "3+",    label: "Years Experience" },
-    { icon: "pi-briefcase",value: "10+",   label: "Projects Delivered" },
-    { icon: "pi-cloud",    value: "Azure", label: "Cloud Platform" },
-    { icon: "pi-server",   value: "Full",  label: "Stack Developer" },
+    { icon: "pi-code",      value: "3+",    label: "Years in Software Development" },
+    { icon: "pi-briefcase", value: "10+",   label: "Projects Delivered" },
+    { icon: "pi-globe",     value: "4",     label: "Live Client Websites" },
+    { icon: "pi-cloud",     value: "Azure", label: "Primary Cloud Platform" },
+  ],
+  highlights: [
+    {
+      icon: "pi-building",
+      title: "Enterprise Development",
+      description:
+        "Building and maintaining internal applications, API integrations, and CI/CD pipelines at Shearwater Adventures — a leading Victoria Falls tourism operator.",
+    },
+    {
+      icon: "pi-desktop",
+      title: "Client-Facing Delivery",
+      description:
+        "Designed, developed, and deployed production websites for travel, events, and hospitality brands — from concept through to live hosting.",
+    },
+    {
+      icon: "pi-sitemap",
+      title: "Full-Stack Perspective",
+      description:
+        "Combines software engineering with network and infrastructure experience — enabling faster diagnosis, cleaner architecture, and smoother deployments.",
+    },
   ],
 };
